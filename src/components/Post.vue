@@ -1,16 +1,10 @@
-<template>
-  <div class="article">
-   <h2>
-     {{ post.title }}
-   </h2>
-   <div id="post_info">
-     <p id="post_published">{{ post.published }}</p>
-     <div id="post_tags" v-for="tag in post.tags">
-       {{ tag.name }}
-     </div>
-   </div>
-   <span v-html="post.body"></span>
-  </div>
+<template lang="pug">
+  div.article
+   h2 {{ post.title }}
+   div#post_info
+     p#post_published {{ post.published }}
+     div(v-for="tag in post.tags")#post_tags {{ tag.name }}
+   span(v-html="post.body")
 </template>
 
 <script>
