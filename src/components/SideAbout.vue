@@ -1,2 +1,2 @@
-<template lang="html">
+<template lang="pug">
 </template>

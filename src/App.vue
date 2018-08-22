@@ -1,54 +1,30 @@
-<template>
-  <div id="app">
-    <div class="hero">
-      <div class="sidebar">
-        <div class="side-top">
-          <div class="sidemenu">
-            <router-view name="side" v-on:select_post="selectPost"></router-view>
-          </div>
-        </div>
-        <div class="side-down">
-         <div class="content">
-           <h1>
-             <router-link class="link" :to="{ name: 'home' }">
-               Kazuki's WebPage
-             </router-link>
-           </h1>
-           <p class="desc">
+<template lang="pug">
+  div#app
+    div.hero
+      div.sidebar
+        div.side-top
+          div.sidemenu
+            router-view(name="side" v-on:select_post="selectPost")
+        div.side-down
+          div.content
+           h1
+             router-link(class="link" :to="{ name: 'home' }")
+               != 'Kazuki\'s WebPage'
+           p.desc
              Web developer in Tokyo, Japan.
-           </p>
-           <nav id="pages">
-             <ul>
-               <li>
-                 <router-link class="link" :to="{ name: 'home' }">
-                   home
-                 </router-link>
-               </li>
-               <li>
-                 <router-link class="link" :to="{ name: 'about' }">
-                   about
-                 </router-link>
-               </li>
-               <li>
-                 <router-link class="link" :to="{ name: 'blog' }">
-                   blog
-                 </router-link>
-               </li>
-             </ul>
-           </nav>
-           <small>
-             © 2018 KazukiYoshida.
-           </small>
-          </div>
-        </div>
-      </div>
-      <div class="main">
-        <div class="article">
-          <router-view name="main" v-bind:post="post"></router-view>
-        </div>
-      </div>
-    </div>
-  </div>
+           nav#pages
+             ul
+               li
+                 router-link(class="link" :to="{ name: 'home' }") home
+               li
+                 router-link(class="link" :to="{ name: 'about' }") about
+               li
+                 router-link(class="link" :to="{ name: 'blog' }") blog
+           small
+             != '© 2018 KazukiYoshida.'
+      div.main
+        div.article
+          router-view(name="main" v-bind:post="post")
 </template>
 
 <script>
