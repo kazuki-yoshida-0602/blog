@@ -1,30 +1,30 @@
 <template lang="pug">
-  div#app
-    div.hero
-      div.sidebar
-        div.side-top
-          div.sidemenu
-            router-view(name="side" v-on:select_post="selectPost")
-        div.side-down
-          div.content
-           h1
-             router-link(class="link" :to="{ name: 'home' }")
-               != 'Kazuki\'s WebPage'
-           p.desc
-             Web developer in Tokyo, Japan.
-           nav#pages
-             ul
-               li
-                 router-link(class="link" :to="{ name: 'home' }") home
-               li
-                 router-link(class="link" :to="{ name: 'about' }") about
-               li
-                 router-link(class="link" :to="{ name: 'blog' }") blog
-           small
-             != '© 2018 KazukiYoshida.'
-      div.main
-        div.article
-          router-view(name="main" v-bind:post="post")
+#app
+  .hero
+    .sidebar
+      .side-top
+        .sidemenu
+          router-view(name="side", v-on:select_post="selectPost")
+      .side-down
+        .content
+         h1
+           router-link(class="link", :to="{ name: 'home' }")
+             | Kazuki's WebPage
+         p.desc
+           Web developer in Tokyo, Japan.
+         nav#pages
+           ul
+             li
+               router-link(class="link", :to="{ name: 'home' }") home
+             li
+               router-link(class="link", :to="{ name: 'about' }") about
+             li
+               router-link(class="link", :to="{ name: 'blog' }") blog
+         small
+           | © 2018 KazukiYoshida.
+    .main
+      .article
+        router-view(name="main", v-bind:post="post")
 </template>
 
 <script>

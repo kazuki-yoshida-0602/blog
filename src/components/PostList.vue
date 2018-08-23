@@ -1,7 +1,7 @@
 <template lang="pug">
-  div
-    div(v-for="(post, index) in posts").link
-      button(@click="selectPost(index)") {{ post.published }} &ensp; {{ post.title }}
+div
+  div(v-for="(post, index) in posts").link
+    button(@click="selectPost(index)") {{ post.published }} &ensp; {{ post.title }}
 </template>
 
 <script>
