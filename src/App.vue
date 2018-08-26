@@ -1,4 +1,10 @@
 <template lang="pug">
+
+-
+  var title        = "Kazuki's WebPage";
+  var description  = "Web developer in Tokyo, Japan.";
+  var copy_right   = "© 2018 KazukiYoshida.";
+
 #app
   .hero
     .sidebar
@@ -9,19 +15,16 @@
         .content
          h1
            router-link(class="link", :to="{ name: 'home' }")
-             | Kazuki's WebPage
+           | #{title}
          p.desc
-           Web developer in Tokyo, Japan.
+           | #{description}
          nav#pages
            ul
-             li
-               router-link(class="link", :to="{ name: 'home' }") home
-             li
-               router-link(class="link", :to="{ name: 'about' }") about
-             li
-               router-link(class="link", :to="{ name: 'blog' }") blog
+             li: router-link(class="link", :to="{ name: 'home' }") home
+             li: router-link(class="link", :to="{ name: 'about' }") about
+             li: router-link(class="link", :to="{ name: 'blog' }") blog
          small
-           | © 2018 KazukiYoshida.
+           | #{copy_right}
     .main
       .article
         router-view(name="main", v-bind:post="post")
