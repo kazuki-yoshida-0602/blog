@@ -1,5 +1,4 @@
 <template lang="pug">
-
 -
   var title        = "Kazuki's WebPage";
   var description  = "Web developer in Tokyo, Japan.";
@@ -7,27 +6,28 @@
 
 #app
   .hero
+    header.header
+      .title
+        router-link(class="link", :to="{ name: 'home' }")
+        | #{title}
+      p.description
+         | #{description}
+
+    main.main
+      router-view(name="main", v-bind:post="post")
+
+    nav.menu
+      ul
+        li: router-link(class="link", :to="{ name: 'home' }") home
+        li: router-link(class="link", :to="{ name: 'about' }") about
+        li: router-link(class="link", :to="{ name: 'blog' }") blog
+
     .sidebar
-      .side-top
-        .sidemenu
-          router-view(name="side", v-on:select_post="selectPost")
-      .side-down
-        .content
-         h1
-           router-link(class="link", :to="{ name: 'home' }")
-           | #{title}
-         p.desc
-           | #{description}
-         nav#pages
-           ul
-             li: router-link(class="link", :to="{ name: 'home' }") home
-             li: router-link(class="link", :to="{ name: 'about' }") about
-             li: router-link(class="link", :to="{ name: 'blog' }") blog
-         small
-           | #{copy_right}
-    .main
-      .article
-        router-view(name="main", v-bind:post="post")
+      router-view(name="side", v-on:select_post="selectPost")
+
+    footer.footer
+      small
+        | #{copy_right}
 </template>
 
 <script>
@@ -68,112 +68,115 @@ export default {
 </script>
 
 <style lang="scss">
+$padding-size:  20px;
+$sidebar-width: 35%;
+$main-width:    62%;
+$font-color:    #2c3e50;
+$hero-image:    "../images/2018/08/dawn.jpg";
 
 /* TODO: リセットcss追加 */
-
-* {
-  font-family: 'Fira Sans';
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "palt" 1;
-}
 
 body {
   margin: 0;
   padding: 0;
   background-color: black;
+  background-image: url($hero-image);
+  background-size: cover;
+  background-position: center;
 }
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: $font-color;
+  width: 100vw;
+  height: 100vh;
 }
 
 .hero {
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../images/2018/08/dawn.jpg');
-  background-size: cover;
-  background-position: center;
-  animation: 1s fadeIn ease-in .5s 1 forwards;
+  margin: 0;
+  padding: $padding-size;
+  width:  calc(100vw - $padding-size * 2);
+  height: calc(100vh - $padding-size * 2);
 }
 
-
-/****** SIDEBAR *******/
-.sidebar {
-  float: left;
-  height: 100%;
-  width: 35%;
-}
-
-.side-top {
-  width: 100%;
-  height: 60%;
-}
-
-.side-top .sidemenu {
-  padding: 10% 0% 0% 20%;
-}
-
-.side-down {
-  width: 100%;
-}
-
-.content {
-  padding: 10% 0% 0% 20%;
+header.header {
+  position: absolute;
+  bottom: $padding-size;
+  left: $padding-size;
+  box-sizing: border-box;
+  height: 35vh;
+  width: $sidebar-width;
   text-align: left;
+  padding-left: 5%;
   color: white;
   text-shadow: 0px 0px 1em black, 0px 0px 1em black;
+
+  > .title {
+    font-size: 4.5em;
+    font-weight: bold;
+  }
+
+  > p.description {
+    font-size: 1.3em;
+  }
+}
+
+nav.menu {
+  position: absolute;
+  bottom: $padding-size;
+  left: $padding-size;
+  box-sizing: border-box;
+  height: 24vh;
+  width: $sidebar-width;
+  text-align: left;
+  padding-left: 2.5%;
+  color: white;
+  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
+
+  > ul > li {
+    display: inline-block;
+    width: 10%;
+  }
 
   > a:visited, a {
     color: white;
     font-size: 1.3em;
     text-decoration: none;
-
     &:hover {
       text-decoration: underline;
     }
   }
-
-  > h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-  }
-
-  > p {
-    font-size: 1.3em;
-  }
 }
 
-nav#pages > ul {
-  padding-left: 0;
-
-  > li {
-    display: inline-block;
-  }
+.sidebar {
+  box-sizing: border-box;
+  position: absolute;
+  top:   $padding-size;
+  left:  $padding-size;
+  height: 55vh;
+  width: $sidebar-width;
+  padding: 3%;
+  text-align: left;
+  padding-left: 5%;
 }
 
-/****** ARTICLE *******/
-.main {
-  float: right;
-  height: 100%;
-  width: 64.8%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+main.main {
+  position: absolute;
+  top:   $padding-size;
+  right: $padding-size;
+  height: 93vh;
+  width: $main-width;
 }
 
-.main .article {
-  padding: 5% 5% ;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
+footer.footer {
+  width: calc(100% - 40px);
+  text-align: center;
+  position: fixed;
+  bottom: $padding-size;
+  color: white;
+  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
 }
 
 </style>
