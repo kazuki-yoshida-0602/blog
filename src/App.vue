@@ -1,47 +1,67 @@
 <template lang="pug">
--
-  var title        = "Kazuki's WebPage";
-  var description  = "Web developer in Tokyo, Japan.";
-  var copy_right   = "© 2018 KazukiYoshida.";
-
 #app
   .hero
     header.header
       .title
         router-link(class="link", :to="{ name: 'home' }")
-        | #{title}
+        | {{ C.TITLE }}
       p.description
-         | #{description}
+        | {{ C.DESCRIPTION }}
 
     main.main
       router-view(name="main", v-bind:post="post")
 
     nav.menu
       ul
-        li: router-link(class="link", :to="{ name: 'home' }") home
-        li: router-link(class="link", :to="{ name: 'about' }") about
-        li: router-link(class="link", :to="{ name: 'blog' }") blog
+        li(v-for="item in C.MENU")
+          router-link(class="link", :to="{ name: item.linkto }")
+            | {{ item.title }}
 
     .sidebar
       router-view(name="side", v-on:select_post="selectPost")
 
     footer.footer
       small
-        | #{copy_right}
+        | {{ C.COPY_RIGHT }}
 </template>
 
 <script>
 import axios from 'axios'
 
+const TITLE               = "Kazuki's WebPage";
+const DESCRIPTION         = "Web developer in Tokyo, Japan.";
+const COPY_RIGHT          = "© 2018 KazukiYoshida.";
+const BUTTER_CMS_ENDPOINT = "https://api.buttercms.com/v2/posts/?page=1&page_size=10&auth_token=02c756e0182ce47b34d9b96ba3a11bd08e46a83b"
+const MENU = [
+  {
+    title: "home",
+    linkto: "home",
+  },
+  {
+    title: "about",
+    linkto: "about",
+  },
+  {
+    title: "blog",
+    linkto: "blog",
+  },
+]
+
 export default {
   name: 'app',
   data () {
+    this.C = {
+      TITLE,
+      DESCRIPTION,
+      COPY_RIGHT,
+      MENU,
+      BUTTER_CMS_ENDPOINT,
+    };
+
     return {
       posts: [],
       post: null,
-      endpoint: 'https://api.buttercms.com/v2/posts/?page=1&page_size=10&auth_token=02c756e0182ce47b34d9b96ba3a11bd08e46a83b',
-      msg: 'Welcome to Your Vue.js App',
-    }
+    };
   },
 
   created() {
@@ -50,7 +70,7 @@ export default {
 
   methods: {
     getAllPosts() {
-      axios.get(this.endpoint)
+      axios.get(this.C.BUTTER_CMS_ENDPOINT)
         .then(response => {
           this.posts = response.data;
         })
