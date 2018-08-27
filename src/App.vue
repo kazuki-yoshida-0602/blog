@@ -68,11 +68,17 @@ export default {
 </script>
 
 <style lang="scss">
-$padding-size:  20px;
-$sidebar-width: 35%;
-$main-width:    62%;
-$font-color:    #2c3e50;
-$hero-image:    "../images/2018/08/dawn.jpg";
+$padding-size:      20px;
+$sidebar-width:     35%;
+$main-width:        62%;
+$font-color-dark:   #2c3e50;
+$font-color-white:  white;
+$hero-image:        "../images/2018/08/bari.jpg";
+$title-font-size:   4.5em;
+$text-font-size:    1.3em;
+$header-height:     35vh;
+$menu-height:       24vh;
+$sidebar-height:    55vh;
 
 /* TODO: リセットcss追加 */
 
@@ -89,7 +95,7 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $font-color;
+  color: $font-color-dark;
   width: 100vw;
   height: 100vh;
 }
@@ -106,20 +112,20 @@ header.header {
   bottom: $padding-size;
   left: $padding-size;
   box-sizing: border-box;
-  height: 35vh;
+  height: $header-height;
   width: $sidebar-width;
   text-align: left;
   padding-left: 5%;
-  color: white;
+  color: $font-color-white;
   text-shadow: 0px 0px 1em black, 0px 0px 1em black;
 
   > .title {
-    font-size: 4.5em;
+    font-size: $title-font-size;
     font-weight: bold;
   }
 
   > p.description {
-    font-size: 1.3em;
+    font-size: $text-font-size;
   }
 }
 
@@ -128,7 +134,7 @@ nav.menu {
   bottom: $padding-size;
   left: $padding-size;
   box-sizing: border-box;
-  height: 24vh;
+  height: $menu-height;
   width: $sidebar-width;
   text-align: left;
   padding-left: 2.5%;
@@ -155,7 +161,7 @@ nav.menu {
   position: absolute;
   top:   $padding-size;
   left:  $padding-size;
-  height: 55vh;
+  height: $sidebar-height;
   width: $sidebar-width;
   padding: 3%;
   text-align: left;
