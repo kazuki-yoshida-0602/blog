@@ -5,28 +5,70 @@
   .description
     | 栃木県生まれ東京都在住の26才。<br />経営コンサルティングファームを経験してからWebエンジニアへ。<br />美味しいお酒がたまらなく好き。
   .section
+
+    //- 趣味
     .section__title
       | ・Favorites
     .section__content
-      p: | Book  Zero to One (Peter Thiel著)<br />
-      p: | Music  Bunt, Clean Bandit, Ateve Aoki, .. <br />
-      p: | Muvie  The Departed (監督: Martin Scorsese)<br />
+      span.section__content__index
+        | Book
+      span.section__content__value
+        | Zero to One (Peter Thiel著)<br />
 
+      span.section__content__index
+        | Music
+      span.section__content__value
+        | Bunt, Clean Bandit, Ateve Aoki, ..<br />
+
+      span.section__content__index
+        | Movie
+      span.section__content__value
+        | The Departed (監督: Martin Scorsese)<br />
+
+    //- スキル
     .section__title
       | ・Skills
     .section__content
-      p: | Backend  Ruby, Ruby on Rails<br />
-      p: | Frontend  Vue.js <br />
-      p: | Others  English at conversational level, Microsoft Excel at Professional level<br />
+      span.section__content__index
+        | Backend
+      span.section__content__value
+        | Ruby, Ruby on Rails<br />
 
+      span.section__content__index
+        | Frontend
+      span.section__content__value
+        | Vue.js<br />
+
+      span.section__content__index
+        | Others
+      span.section__content__value
+        | Microsoft Excel<br />
+
+    //- 履歴
     .section__title
       | ・History
     .section__content
-      p: | 2008  東京学芸大学附属高校に入学<br />
-      p: | 2011  京都大学に入学、サークル活動や留学など<br />
-      p: | 2015  京都大学大学院へ進学<br />
-      p: | 2017  経営共創基盤に入社し、経営コンサルタントに<br /> 
-      p: | 2018  都内IT企業へ入社しエンジニアに  ← Now
+      span.section__content__index
+        | 2008
+      span.section__content__value
+        | 東京学芸大学附属高校に入学<br />
+      span.section__content__index
+        | 2011
+      span.section__content__value
+        | 京都大学に入学、サークル活動や留学など<br />
+      span.section__content__index
+        | 2015
+      span.section__content__value
+        | 京都大学大学院へ進学<br />
+      span.section__content__index
+        | 2017
+      span.section__content__value
+        | 経営共創基盤に入社し、経営コンサルタントに<br />
+      span.section__content__index
+        | 2018
+      span.section__content__value
+        | 都内IT企業へ入社しエンジニアに  ← Now<br />
+
 </template>
 
 <style lang="scss" scoped>
@@ -64,6 +106,10 @@ $padding-size: 20px;
   > .section__content {
     margin-left: 5%;
     font-size: 1.0em;
+  }
+
+  > .section__content > span.section__content__index {
+    font-weight: bold;
   }
 }
 
