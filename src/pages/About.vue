@@ -1,77 +1,72 @@
 <template lang="pug">
-.main
-  .article
-      .title
-        | Kazuki Yoshida
-      .description
-        | 栃木県生まれ東京都在住の26才。専門は物理学。<br />経営コンサルティングファームを経験してからWebエンジニアへ。<br />趣味は美味しいお酒と陽気な音楽。
-      .section
-        .section-title
-          | ・History
-        .section-content
-          p: | 2008  東京学芸大学附属高校に入学<br />
-          p: | 2011  京都大学に入学、サークル活動や留学など<br />
-          p: | 2015  京都大学大学院へ進学<br />
-          p: | 2017  経営共創基盤に入社し、経営コンサルタントとして修行を積む<br /> 
-          p: | 2018  都内のIT企業へバックエンドエンジニアとして入社<br /> 
-          p: | 2018  ← Now<br /> 
-        .section-title
-          | ・Favorites
-        .section-content
-          p: | Book  Zero to One (Peter Thiel著)<br />
-          p: | Music  Bunt, Clean Bandit, Ateve Aoki, .. <br />
-          p: | Muvie  The Departed (監督: Martin Scorsese)<br />
-        .section-title
-          | ・Skills
-        .section-content
-          p: | Backend  Ruby, Ruby on Rails<br />
-          p: | Frontend  Vue.js <br />
-          p: | Others  English at conversational level, Microsoft Excel at Professional level<br />
-  
+.about
+  .top-image
+    img(class="top-image__img", src="images/sheep.png")
+  .description
+    | 栃木県生まれ東京都在住の26才。<br />経営コンサルティングファームを経験してからWebエンジニアへ。<br />美味しいお酒がたまらなく好き。
+  .section
+    .section__title
+      | ・Favorites
+    .section__content
+      p: | Book  Zero to One (Peter Thiel著)<br />
+      p: | Music  Bunt, Clean Bandit, Ateve Aoki, .. <br />
+      p: | Muvie  The Departed (監督: Martin Scorsese)<br />
 
+    .section__title
+      | ・Skills
+    .section__content
+      p: | Backend  Ruby, Ruby on Rails<br />
+      p: | Frontend  Vue.js <br />
+      p: | Others  English at conversational level, Microsoft Excel at Professional level<br />
+
+    .section__title
+      | ・History
+    .section__content
+      p: | 2008  東京学芸大学附属高校に入学<br />
+      p: | 2011  京都大学に入学、サークル活動や留学など<br />
+      p: | 2015  京都大学大学院へ進学<br />
+      p: | 2017  経営共創基盤に入社し、経営コンサルタントに<br /> 
+      p: | 2018  都内IT企業へ入社しエンジニアに  ← Now
 </template>
 
 <style lang="scss" scoped>
-$font-color-dark:   #2c3e50;
-$font-color-white:  white;
-$background-color-dart: #363434;
+$padding-size: 20px;
 
-.top-image {
-  background-image: url('');
-  background-size: cover;
-  background-position: center;
-  height: 40vh;
-}
+.about {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
 
-.article {
-  float: right;
-  padding: 5%;
-  width: 60%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0.85;
 
-  > .title {
-    font-size: 5em;
-    margin-bottom: 5%;
+  width: 55%;
+  height: 82%;
+  padding: 2%;
+
+  position: fixed;
+  right: $padding-size;
+}
+
+.top-image__img {
+  border-radius: 50%;
+}
+
+.description {
+  margin-top: 3%;
+}
+
+.section {
+  > .section__title {
+    margin-top: 3%;
+    font-size: 1.2em;
+    font-weight: bold;
   }
-
-  > .description {
-    font-size: 1.3em;
-    margin-bottom: 5%;
-  }
-
-  > .section > .section-title {
-    font-size: 1.8em;
-    margin-bottom: 1%;
-  }
-
-  > .section > .section-content {
-    font-size: 1.3em;
-    margin-bottom: 2%;
+  > .section__content {
     margin-left: 5%;
-    > p {
-      margin-bottom: 1%;
-    }
+    font-size: 1.0em;
   }
 }
+
+
 </style>
+
