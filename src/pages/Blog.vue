@@ -2,11 +2,16 @@
 div
   div(v-for="(post, index) in posts").link
     button(@click="selectPost(index)") {{ post.published }} &ensp; {{ post.title }}
+
+  .article
+    h2 {{ post.title }}
+    #post_info
+      p#post_published {{ post.published }}
+      div(v-for="tag in post.tags")#post_tags {{ tag.name }}
+    span(v-html="post.body")
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
     data () {
       return {
@@ -34,34 +39,19 @@ div
       selectPost: function(index) {
         this.$emit('select_post', this.posts[index]);
       }
+    },
 
-    }
+    props: ['post'],
   }
 </script>
 
-<style lang="scss">
-
-button{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
-  color: white;
-  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
-
-  &:hover {
-    text-decoration: underline;
-  }
+<style scoped>
+.article {
+  padding: 5%;
+  background-color: #EFEFEF;
 }
 
-.link {
-  display: block;
-  text-decoration: none;
-  margin-bottom: 10px;
-  color: white;
-  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
+#post_info {
+  text-align: right;
 }
-
 </style>
