@@ -108,6 +108,7 @@ $padding-size: 20px;
   opacity: 0.85;
 
   box-sizing: border-box;
+  overflow:auto;
   width: 61%;
   height: 91%;
   padding: 2%;
@@ -134,10 +135,12 @@ $padding-size: 20px;
   > .section__content {
     margin-left: 5%;
     font-size: 1.0em;
-  }
 
-  > .section__content > span.section__content__index {
-    font-weight: bold;
+    > span.section__content__index {
+      font-weight: bold;
+      display: inline-block;
+      width: 62px;
+    }
   }
 }
 
@@ -150,6 +153,4 @@ a:visited, a {
   }
 }
 
-
 </style>
-
