@@ -52,11 +52,11 @@ body {
 }
 
 header.header {
-  /* border: solid #808000; */
-  padding-left: 5%;
-  width: 30%;
+  border: solid #808000;
+  width: 25%;
   position: fixed;
   bottom: 10%;
+  left: 6.5%;
 
   text-shadow: 0em 0em 10em black, 0em 0em 10em black;
   color: white;
