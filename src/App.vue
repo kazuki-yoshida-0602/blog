@@ -52,7 +52,7 @@ body {
 }
 
 header.header {
-  border: solid #808000;
+  /*  border: solid #808000; */
   width: 25%;
   position: fixed;
   bottom: 10%;
