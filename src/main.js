@@ -1,35 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Meta from 'vue-meta'
-import App from './App.vue'
-import About from './components/About.vue'
-import SideAbout from './components/SideAbout.vue'
-import Post from './components/Post.vue'
-import PostList from './components/PostList.vue'
+import App from './App'
+
+import Home from './pages/Home'
+import About from './pages/About'
+import Blog from './pages/Blog'
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: '/home',
+      component: Home,
     },
     {
       path: '/about',
-      name: 'about',
-      components: {
-        side: SideAbout,
-        main: About,
-      },
+      component: About,
     },
     {
       path: '/blog',
-      name: 'blog',
-      components: {
-        side: PostList,
-        main: Post,
-      },
+      component: Blog,
     },
   ],
   mode: 'history'

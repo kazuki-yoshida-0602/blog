@@ -2,206 +2,102 @@
 #app
   .hero
     header.header
-      .title
-        router-link(class="link", :to="{ name: 'home' }")
-        | {{ C.TITLE }}
-      p.description
-        | {{ C.DESCRIPTION }}
+      .header__title
+        router-link(class="link", to="/home")
+          | Kazuki Yoshida
+      p.header__description
+        | @Tokyo, Japan. <br />
+        | Backend web developer, Master of Physics.
+      nav.menu
+        ul.menu
+          router-link(class="menu__item", to="/home")
+            span
+              | home
+          router-link(class="menu__item", to="/about")
+            span
+              | about
+          router-link(class="menu__item", to="/blog")
+            span
+              | blog
 
-    main.main
-      router-view(name="main", v-bind:post="post")
-
-    nav.menu
-      ul
-        li(v-for="item in C.MENU")
-          router-link(class="link", :to="{ name: item.linkto }")
-            | {{ item.title }}
-
-    .sidebar
-      router-view(name="side", v-on:select_post="selectPost")
+    router-view(v-bind:post="post")
 
     footer.footer
-      small
-        | {{ C.COPY_RIGHT }}
+      .footer__copyright
+        | © 2018 KazukiYoshida
 </template>
-
-<script>
-import axios from 'axios'
-
-const TITLE               = "Kazuki's WebPage";
-const DESCRIPTION         = "Web developer in Tokyo, Japan.";
-const COPY_RIGHT          = "© 2018 KazukiYoshida.";
-const BUTTER_CMS_ENDPOINT = "https://api.buttercms.com/v2/posts/?page=1&page_size=10&auth_token=02c756e0182ce47b34d9b96ba3a11bd08e46a83b"
-const MENU = [
-  {
-    title: "home",
-    linkto: "home",
-  },
-  {
-    title: "about",
-    linkto: "about",
-  },
-  {
-    title: "blog",
-    linkto: "blog",
-  },
-]
-
-export default {
-  name: 'app',
-  data () {
-    this.C = {
-      TITLE,
-      DESCRIPTION,
-      COPY_RIGHT,
-      MENU,
-      BUTTER_CMS_ENDPOINT,
-    };
-
-    return {
-      posts: [],
-      post: null,
-    };
-  },
-
-  created() {
-    this.getAllPosts();
-  },
-
-  methods: {
-    getAllPosts() {
-      axios.get(this.C.BUTTER_CMS_ENDPOINT)
-        .then(response => {
-          this.posts = response.data;
-        })
-        .catch(error => {
-          console.log('-------------error------------');
-          console.log(error);
-        })
-    },
-
-    selectPost(post) {
-      this.post = post;
-    }
-  }
-}
-</script>
 
 <style lang="scss">
 $padding-size:      20px;
-$sidebar-width:     35%;
-$main-width:        62%;
-$font-color-dark:   #2c3e50;
-$font-color-white:  white;
 $hero-image:        "../images/2018/08/bari.jpg";
-$title-font-size:   4.5em;
-$text-font-size:    1.3em;
-$header-height:     35vh;
-$menu-height:       24vh;
-$sidebar-height:    55vh;
 
-/* TODO: リセットcss追加 */
-
-body {
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
+  height: 100vh;
+
   background-color: black;
   background-image: url($hero-image);
   background-size: cover;
   background-position: center;
-}
 
-#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $font-color-dark;
-  width: 100vw;
-  height: 100vh;
 }
 
 .hero {
-  margin: 0;
   padding: $padding-size;
-  width:  calc(100vw - $padding-size * 2);
-  height: calc(100vh - $padding-size * 2);
 }
 
 header.header {
-  position: absolute;
-  bottom: $padding-size;
-  left: $padding-size;
-  box-sizing: border-box;
-  height: $header-height;
-  width: $sidebar-width;
-  text-align: left;
-  padding-left: 5%;
-  color: $font-color-white;
-  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
+  /*  border: solid #808000; */
+  width: 25%;
+  position: fixed;
+  bottom: 10%;
+  left: 6.5%;
 
-  > .title {
-    font-size: $title-font-size;
-    font-weight: bold;
-  }
-
-  > p.description {
-    font-size: $text-font-size;
-  }
-}
-
-nav.menu {
-  position: absolute;
-  bottom: $padding-size;
-  left: $padding-size;
-  box-sizing: border-box;
-  height: $menu-height;
-  width: $sidebar-width;
-  text-align: left;
-  padding-left: 2.5%;
+  text-shadow: 0em 0em 10em black, 0em 0em 10em black;
   color: white;
-  text-shadow: 0px 0px 1em black, 0px 0px 1em black;
-
-  > ul > li {
-    display: inline-block;
-    width: 10%;
-  }
+  text-decoration: none;
 
   > a:visited, a {
     color: white;
-    font-size: 1.3em;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
   }
+
+  > .header__title {
+    font-size: 2.7em;
+    font-weight: bold;
+  }
+
+  > p.header__description {
+    font-size: 1.2em;
+  }
+
+  > .menu {
+    font-size: 1.2em;
+  }
 }
 
-.sidebar {
-  box-sizing: border-box;
-  position: absolute;
-  top:   $padding-size;
-  left:  $padding-size;
-  height: $sidebar-height;
-  width: $sidebar-width;
-  padding: 3%;
-  text-align: left;
-  padding-left: 5%;
-}
-
-main.main {
-  position: absolute;
-  top:   $padding-size;
-  right: $padding-size;
-  height: 93vh;
-  width: $main-width;
+span {
+  margin-right: 0.5em;
 }
 
 footer.footer {
-  width: calc(100% - 40px);
-  text-align: center;
+  /* border: solid #808000; */
   position: fixed;
   bottom: $padding-size;
+  height: 2%;
+  width: calc(100% - 40px);
+
   color: white;
+  text-align: center;
   text-shadow: 0px 0px 1em black, 0px 0px 1em black;
 }
 
