@@ -83,7 +83,6 @@ $padding-size: 20px;
   width: 100%;
   margin-top: 4%;
 
-  text-shadow: 0em 0em 10em black, 0em 0em 10em black;
   color: white;
 
   > .sidebar__post__title {
