@@ -98,7 +98,6 @@ $padding-size: 20px;
 
 .article {
   background-color: white;
-  opacity: 0.85;
 
   box-sizing: border-box;
   width: 61%;

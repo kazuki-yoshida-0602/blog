@@ -105,7 +105,7 @@ $padding-size: 20px;
   font-size: 1.2em;
 
   background-color: white;
-  opacity: 0.85;
+  /* opacity: 0.85; */
 
   box-sizing: border-box;
   overflow:auto;
