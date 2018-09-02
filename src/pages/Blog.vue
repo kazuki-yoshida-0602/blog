@@ -108,12 +108,15 @@ $padding-size: 20px;
   right: calc(20px + 3%);
 
   > .article__title {
-    font-size: 1.3em;
+    margin-top: 4%;
+    font-weight: bold;
+    font-size: 1.6em;
   }
 
   > .article__published {
-    font-size: 1.0em;
-    text-align: right;
+    margin-bottom: 5%;
+    font-size: 0.8em;
+    color: #999999;
   }
 
   > .article__body {
