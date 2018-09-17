@@ -1,31 +1,37 @@
 <template lang="pug">
 .about
+  header(:class="{ active: isNotLanding }").mobile-header
+    a(href="/").mobile-header__title
+      | ⬅︎   Back to Top
+    div(@click="menuToggle", v-bind:class="{ active: menuFlag }").mobile-header__menu
+      span
+      span
+      span
   transition(appear, name="contents")
     .top-image
       img(class="top-image__img", src="images/sheep.png")
       img(class="top-image__img", src="images/selfie.jpg")
   transition(appear, name="contents2")
     .description
-      | 都内でWebエンジニアとして働き、バックエンド・フロントエンドの修行を積む26才。<br />
-      | 作りたいものが色々とあるので時間を見つけて開発している。<br />
+      | 都内でWebエンジニアとして働いている26歳。普段はバックエンドエンジニアだが、フロントエンドも組み込みも好きなので幅広く勉強中。<br />
       | 趣味は美味しいお酒とおつまみを用意して映画を流しながらコードを書くこと。<br />
   transition(appear, name="contents3")
     .section
 
       //- スキル
       .section__title
-        | ・Skills
+        | Skills
       .section__content
         span.section__content__index
           | Backend
         span.section__content__value
           | Ruby, Ruby on Rails<br />
-  
+
         span.section__content__index
           | Frontend
         span.section__content__value
           | Vue.js<br />
-  
+
         span.section__content__index
           | Others
         span.section__content__value
@@ -33,7 +39,7 @@
 
       //- ソーシャル
       .section__title
-        | ・Social
+        | Social
       .section__content
         span.section__content__index
           | GitHub
@@ -49,7 +55,7 @@
 
       //- 趣味
       .section__title
-        | ・Favorites
+        | Favorites
       .section__content
         span.section__content__index
           | Book
@@ -75,7 +81,7 @@
 
       //- 履歴
       .section__title
-        | ・History
+        | History
       .section__content
         span.section__content__index
           | 2000
@@ -84,21 +90,40 @@
         span.section__content__index
           | 2008
         span.section__content__value
-          | 学芸大附高に入りプログラミングを始める<br />
+          | 高校でプログラミングを始める<br />
         span.section__content__index
           | 2011
         span.section__content__value
-          | 京都大学に入学、サークル活動や留学など気ままに過ごす<br />
+          | 大学に入学、サークル活動や留学など気ままに過ごす<br />
         span.section__content__index
           | 2017
         span.section__content__value
-          | 戦略コンサルとして経営再建PJ、経営計画策定PJなどに携わる<br />
+          | 経営コンサルタントとして経営再建PJ、経営計画策定PJなどに携わる<br />
         span.section__content__index
           | 2018
         span.section__content__value
-          | 東京のIT企業へ入社しWebエンジニアに  ← Now<br />
+          | IT企業へ入社しWebエンジニアに  ← Now<br />
 
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      menuFlag: false,
+    }
+  },
+
+  methods: {
+    menuToggle: function() {
+      console.log("menuFlag")
+      console.log(this.menuFlag)
+      this.menuFlag = !this.menuFlag;
+    }
+  },
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '../mixins';
@@ -107,36 +132,59 @@ $padding-size: 20px;
 
 .about {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  /* font-size: 1.2em; */
-  font-size: 14px;
+  font-size: 12px;
 
-  background-color: white;
-  /* opacity: 0.85; */
+  color: white;
+  background-color: black;
+  opacity: 0.85;
 
   box-sizing: border-box;
   overflow:auto;
-  width: 61%;
-  height: 91%;
-  padding: 2%;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
 
   position: fixed;
-  right: calc(20px + 3%);
+  right: 20px;
 
   @include sp {
-  width: 94%;
-  position: fixed;
-  height: 91%;
-  right: calc(12px);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0%;
+    padding: 10%;
 
-  font-size: 12px;
+    font-size: 12px;
   }
+  @include pc {
+    width: 65%;
+    height: 95%;
+    padding: 5%;
 
+    font-size: 18px;
+  }
+}
+
+.top-image {
+  @include sp {
+    margin-left: 25%;
+  }
+  @include pc {
+    margin-left: 35%;
+  }
 }
 
 .top-image__img {
   border-radius: 50%;
-  width: 12%;
+
+  @include sp {
+    width: 120px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  @include pc {
+    width: 140px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
 }
 
 .description {
@@ -156,19 +204,90 @@ $padding-size: 20px;
     > span.section__content__index {
       font-weight: bold;
       display: inline-block;
-      width: 62px;
+      @include sp {
+        width: 62px;
+      }
+      @include pc {
+        width: 100px;
+      }
     }
   }
 }
 
 a:visited, a {
-  color: black;
+  color: white;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
 }
+
+
+/*****  mobile用ヘッダ *****/
+.mobile-header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  background: black;
+
+  @include pc {
+    display: none;
+  }
+
+  > .mobile-header__title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+/* humberger menu */
+.mobile-header__menu, .mobile-header__menu span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.mobile-header__menu {
+  position: fixed;
+  right: 20px;
+  width: 30px;
+  height: 22px;
+}
+.mobile-header__menu span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.mobile-header__menu span:nth-of-type(1) {
+  top: 0;
+}
+.mobile-header__menu span:nth-of-type(2) {
+  top: 10px;
+}
+.mobile-header__menu span:nth-of-type(3) {
+  bottom: 0;
+}
+.mobile-header__menu.active span:nth-of-type(1) {
+  -webkit-transform: translateY(10px) rotate(-45deg);
+  transform: translateY(10px) rotate(-45deg);
+}
+.mobile-header__menu.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.mobile-header__menu.active span:nth-of-type(3) {
+  -webkit-transform: translateY(-10px) rotate(45deg);
+  transform: translateY(-10px) rotate(45deg);
+}
+
+
 
 
 /*************************************/
