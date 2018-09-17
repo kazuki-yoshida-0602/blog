@@ -13,7 +13,8 @@
       img(class="top-image__img", src="images/selfie.jpg")
   transition(appear, name="contents2")
     .description
-      | 都内でWebエンジニアとして働いている26歳。普段はバックエンドエンジニアだが、フロントエンドも組み込みも好きなので幅広く勉強中。<br />
+      | 都内でWebエンジニアとして働いている26歳。<br />
+      | 普段はバックエンドエンジニアだが、フロントエンドも組み込みも好きなので幅広く勉強中。<br />
       | 趣味は美味しいお酒とおつまみを用意して映画を流しながらコードを書くこと。<br />
   transition(appear, name="contents3")
     .section
@@ -61,7 +62,7 @@
           | Book
         span.section__content__value
           a(href="https://www.amazon.co.jp/dp/B00NQ3QONK/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1", target="_blank")
-            | Zero to One (Peter Thiel著)<br />
+            | Zero to One<br />
 
         span.section__content__index
           | Music
@@ -71,13 +72,12 @@
           a(href="https://www.youtube.com/watch?v=m-M1AtrxztU", target="_blank")
             | Clean Bandit, 
           a(href="https://www.youtube.com/watch?v=AYD7TuXWVH8", target="_blank")
-            | Steve Aoki,
-            |..<br />
+            | Steve Aoki
         span.section__content__index
           | Movie
         span.section__content__value
           a(href="https://www.youtube.com/watch?v=SGWvwjZ0eDc", target="_blank")
-            | The Departed (監督: Martin Scorsese)<br />
+            | The Departed<br />
 
       //- 履歴
       .section__title
@@ -86,7 +86,7 @@
         span.section__content__index
           | 2000
         span.section__content__value
-          | 物理学に興味を持ち勉強を始める<br />
+          | 将来は物理学者になりたいと考える<br />
         span.section__content__index
           | 2008
         span.section__content__value
@@ -94,15 +94,27 @@
         span.section__content__index
           | 2011
         span.section__content__value
-          | 大学に入学、サークル活動や留学など気ままに過ごす<br />
+        | 京都の大学に入学<br />
+        span.section__content__index
+          |
+        span.section__content__value
+        | サークル活動やアメリカ留学などを経験<br />
         span.section__content__index
           | 2017
         span.section__content__value
-          | 経営コンサルタントとして経営再建PJ、経営計画策定PJなどに携わる<br />
+          | 経営コンサルタントとして経営再建PJ、
+        span.section__content__index
+          |
+        span.section__content__value
+          | 経営計画策定PJなどに携わる
         span.section__content__index
           | 2018
         span.section__content__value
-          | IT企業へ入社しWebエンジニアに  ← Now<br />
+          | IT企業へ入社しWebエンジニアに
+        span.section__content__index
+          |
+        span.section__content__value
+          | ← Now
 
 </template>
 
@@ -176,7 +188,7 @@ $padding-size: 20px;
   border-radius: 50%;
 
   @include sp {
-    width: 120px;
+    width: 90px;
     margin-top: 80px;
     margin-bottom: 80px;
   }
@@ -189,23 +201,30 @@ $padding-size: 20px;
 
 .description {
   margin-top: 3%;
+  @include sp {
+    line-height: 24px;
+  }
+  @include pc {
+    line-height: 30px;
+  }
 }
 
 .section {
   > .section__title {
-    margin-top: 3%;
-    font-size: 1.2em;
-    font-weight: bold;
+    margin-top: 10%;
+    margin-bottom: 1%;
+    font-size: 24px;
   }
   > .section__content {
     margin-left: 5%;
-    font-size: 1.0em;
+    font-size: 12px;
+    line-height: 20px;
 
     > span.section__content__index {
       font-weight: bold;
       display: inline-block;
       @include sp {
-        width: 62px;
+        width: 66px;
       }
       @include pc {
         width: 100px;
